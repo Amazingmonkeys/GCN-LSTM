@@ -2,10 +2,11 @@ from step1_read_data import ReadData
 from step2_preprocessing import Preprocessing
 from step3_gcn_lstm import GcnLstm
 from step4_evaluation import Evaluation
+import sys
 
 if __name__ == '__main__':
-    adj = ReadData().read_data("sensor_dist_adj.csv")
-    speed = ReadData().read_data("speed_data.csv")
+    adj = ReadData().read_data(sys.argv[1])
+    speed = ReadData().read_data(sys.argv[2])
 
     train_data, test_data = Preprocessing().train_test_split(speed)
     train_scaled, test_scaled = Preprocessing().scale_data(train_data, test_data)
